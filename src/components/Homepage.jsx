@@ -1,18 +1,18 @@
-import React from 'react'
-import { Typography, Statistic, Row, Col } from 'antd'
-import { Link } from 'react-router-dom'
-import { useGetCryptoQuery } from '../services/cryptoApi'
-import millify from 'millify'
-import { Cryptocurrencies, News } from '../components'
-const { Title } = Typography
+import React from 'react';
+import { Typography, Statistic, Row, Col } from 'antd';
+import { Link } from 'react-router-dom';
+import { useGetCryptoQuery } from '../services/cryptoApi';
+import millify from 'millify';
+import { Cryptocurrencies, News } from '../components';
+const { Title } = Typography;
 
 const Homepage = () => {
-    const { data, isFetching } = useGetCryptoQuery()
-    const globalStats = data?.data?.stats
+    const { data, isFetching } = useGetCryptoQuery(10);
+    const globalStats = data?.data?.stats;
 
-    if (isFetching) return 'ruk bsdk load hone de'
+    if (isFetching) return 'ruk bsdk load hone de';
 
-    console.log(globalStats)
+    console.log(globalStats);
     return (
         <>
             <Title level={2} className="heading">
@@ -70,7 +70,7 @@ const Homepage = () => {
             </div>
             <News simplified />
         </>
-    )
-}
+    );
+};
 
-export default Homepage
+export default Homepage;

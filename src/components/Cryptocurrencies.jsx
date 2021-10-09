@@ -1,20 +1,25 @@
-import React, { useState } from 'react'
-import { millify } from 'millify'
-import { Card, Col, Row, Input } from 'antd'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react';
+import { millify } from 'millify';
+import { Card, Col, Row, Input } from 'antd';
+import { Link } from 'react-router-dom';
 
-import { useGetCryptoQuery } from '../services/cryptoApi'
+import { useGetCryptoQuery } from '../services/cryptoApi';
 
-const Cryptocurrencies = () => {
-    const { data: cryptoList, isFetching } = useGetCryptoQuery()
-    const [cryptos, setCryptos] = useState(cryptoList?.data?.coins)
+const Cryptocurrencies = ({ simplified }) => {
+    //simplified coming through props
+    const count = simplified ? 10 : 100;
+
+    console.log(count);
+    const { data: cryptoList, isFetching } = useGetCryptoQuery(count);
+    const [cryptos, setCryptos] = useState(cryptoList?.data?.coins);
     // console.log(cryptos) [for check data n console]
+    if (isFetching) return 'ruk ja bsdk load ho raha';
 
     return (
         <div>
             <>
                 <Row gutter={[32, 32]} className="crypto-card-container">
-                    {cryptos.map((currency) => (
+                    {cryptos?.map((currency) => (
                         <Col
                             xs={24}
                             sm={12}
@@ -29,6 +34,7 @@ const Cryptocurrencies = () => {
                                         <img
                                             className="crypto-image"
                                             src={currency.iconUrl}
+                                            alt="crypto"
                                         />
                                     }
                                     hoverable
@@ -47,7 +53,7 @@ const Cryptocurrencies = () => {
                 </Row>
             </>
         </div>
-    )
-}
+    );
+};
 
-export default Cryptocurrencies
+export default Cryptocurrencies;
