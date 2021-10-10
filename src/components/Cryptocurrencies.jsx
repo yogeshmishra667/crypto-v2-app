@@ -12,7 +12,7 @@ const Cryptocurrencies = ({ simplified }) => {
   //console.log(count);
   const { data: cryptoList, isFetching } = useGetCryptoQuery(count);
   const [cryptos, setCryptos] = useState(cryptoList?.data?.coins);
-  const [SearchTerm, setSearchTerm] = useState(' ');
+  const [SearchTerm, setSearchTerm] = useState('');
   useEffect(() => {
     const filterData = cryptoList?.data?.coins.filter((coin) =>
       coin.name.toLowerCase().includes(SearchTerm.toLowerCase()),
@@ -20,7 +20,7 @@ const Cryptocurrencies = ({ simplified }) => {
     setCryptos(filterData);
   }, [cryptoList, SearchTerm]);
   // console.log(cryptos) [for check data n console]
-  if (isFetching) return 'ruk ja bsdk load ho raha';
+  if (isFetching) return 'Ruk ja Bsdk Load Ho Raha';
 
   return (
     <>

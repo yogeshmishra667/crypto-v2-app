@@ -12,7 +12,7 @@ const Homepage = () => {
 
     if (isFetching) return 'ruk bsdk load hone de';
 
-    console.log(globalStats);
+    //console.log(globalStats);
     return (
         <>
             <Title level={2} className="heading">
