@@ -1,3 +1,4 @@
 {
-  "cSpell.words": ["Categoty", "iconUrl", "millify"]
+  "cSpell.words": ["Categoty", "iconUrl", "millify"],
+  "editor.bracketPairColorization.enabled": true
 }

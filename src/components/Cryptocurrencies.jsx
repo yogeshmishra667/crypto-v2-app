@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { millify } from 'millify';
 import { Card, Col, Row, Input } from 'antd';
 import { Link } from 'react-router-dom';
-
+import { SemipolarLoading } from 'react-loadingg';
 import { useGetCryptoQuery } from '../services/cryptoApi';
 
 const Cryptocurrencies = ({ simplified }) => {
@@ -20,7 +20,7 @@ const Cryptocurrencies = ({ simplified }) => {
     setCryptos(filterData);
   }, [cryptoList, SearchTerm]);
   // console.log(cryptos) [for check data n console]
-  if (isFetching) return 'Ruk ja Bsdk Load Ho Raha';
+  if (isFetching) return <SemipolarLoading color="#0071bd" />;
 
   return (
     <>
